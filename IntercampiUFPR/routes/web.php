@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('linhas', 'LinhaController');
+Route::resource('campi', 'CampusController');

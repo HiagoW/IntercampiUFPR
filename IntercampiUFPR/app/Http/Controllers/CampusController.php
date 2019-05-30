@@ -3,20 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Linha;
-
-class LinhaController extends Controller
+use App\Campus;
+class CampusController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $linhas = Linha::all();
+        $campi = Campus::all();
 
-        return view('linhas.index', compact('linhas'));
+        return view('campi.index', compact('campi'));
     }
 
     /**
@@ -26,7 +25,7 @@ class LinhaController extends Controller
      */
     public function create()
     {
-        return view('linhas.create');
+        return view('campi.create');
     }
 
     /**
@@ -38,13 +37,15 @@ class LinhaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nomeLinha'=>'required|unique:linhas|max:50',
+            'nomeCampus'=>'required|unique:campuses|max:200',
+            'sigla'=>'required'
         ]);
-        $linha = new Linha([
-            'nomeLinha'=>$request->get('nomeLinha'),
+        $campus = new Campus([
+            'nomeCampus'=>$request->get('nomeCampus'),
+            'sigla'=>$request->get('sigla')
         ]);
-        $linha->save();
-        return redirect('/linhas')->with('success', 'Linha adicionada!');
+        $campus->save();
+        return redirect('/campi')->with('success', 'Campus adicionado!');
     }
 
     /**
@@ -66,9 +67,9 @@ class LinhaController extends Controller
      */
     public function edit($id)
     {
-        $linha = Linha::find($id);
+        $campus = campus::find($id);
 
-        return view('linhas.edit', compact('linha'));
+        return view('campi.edit', compact('campus'));
     }
 
     /**
@@ -81,14 +82,16 @@ class LinhaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nomeLinha'=>'required|max:50',
+            'nomeCampus'=>'required|max:200',
+            'sigla'=>'required'
         ]);
 
-        $linha = Linha::find($id);
-        $linha->nomeLinha = $request->get('nomeLinha');
-        $linha->save();
+        $campus = Campus::find($id);
+        $campus->nomeCampus = $request->get('nomeCampus');
+        $campus->sigla = $request->get('sigla');
+        $campus->save();
 
-        return redirect('/linhas')->with('success','Linha alterada!');
+        return redirect('/campi')->with('success','Campus alterado!');
     }
 
     /**
@@ -99,9 +102,9 @@ class LinhaController extends Controller
      */
     public function destroy($id)
     {
-        $linha = Linha::find($id);
-        $linha->delete();
+        $campus = campus::find($id);
+        $campus->delete();
 
-     return redirect('/linhas')->with('success', 'Linha deletada!');
+     return redirect('/campi')->with('success', 'Campus deletado!');
     }
 }
