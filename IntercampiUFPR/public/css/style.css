@@ -1,0 +1,204 @@
+body{
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+  
+}
+
+html{
+    height: 100%;
+}
+
+p, span, select, option, .custom-select{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #232443;
+}
+
+hr{
+    border-top: 2px solid rgba(0,0,0,.1);
+}
+
+.custom-select{
+    font-size: 1.1rem;
+}
+
+a{
+    color: #abadaf;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.col-md-4{
+    padding: 0px 5px 0px 5px;
+}
+
+.divLogo{
+    text-align: center;
+    margin-top: 1em;
+}
+
+.subHeader{
+    text-align: center;
+    padding: 0.4em;
+    background-color: #232443;
+    font-size: 1.5em;
+    margin: 1em 0 0 0;
+}
+/*
+.subHeader p{
+    color: #fff;
+    margin-bottom: 0;
+}*/
+
+.rowIndicMap{
+    margin-bottom: 1em;
+    margin-top: -0.7em;
+}
+
+.indicIconMap{
+    height: 30px;
+    width: 30px;
+}
+
+.spanMap{
+    font-size: 1.1em;
+    margin-left: 0.5em;
+}
+
+.select{
+    margin-bottom: 5px;
+}
+
+.labelDesc{
+    text-align: center;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 1.4em;
+    margin: 1em 0 1em 0;
+    color: #ff9a00;
+}
+
+.select2{
+    margin-bottom: 20px;
+}
+
+.iconMap{
+    width: 40px;
+    height: 40px;
+}
+
+.divIconMap{
+    padding-left:0;
+}
+
+.rowIndicParada{
+    text-align: center;
+    padding: 0em 0.5em 0em 0.5em;
+}
+
+.indicParada{
+    height: 40px;
+    width: 33px;
+    margin-right: 0.5em;
+}
+
+.spanParada{
+    font-size: 1.2em;
+}
+
+.divFeed{
+    padding: 0.1em;
+}
+
+.divFeed button{
+    padding: 0.3em;
+}
+
+.divTitulo{
+    text-align: center;
+    margin: 1.5em 0 1.5em 0;
+    /*border-radius: 0.3em;
+    padding: 0.8em 0 0.8em 0;
+    background-color: #232443;*/
+}
+.titulo{
+    /*display: inline;*/
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    margin: 0.5em 0 1em 0;
+    /*padding: 20px 30px 20px 30px;*/
+    
+    /*background-color: #232443;
+    color: #fff;*/
+}
+
+.iti{
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.setas{
+    width: 26px;
+    height: 26px;
+}
+
+.origem{
+    text-align:right;
+}
+
+.destino{
+    text-align: left;
+}
+
+.divIti{
+    text-align: center;
+}
+
+.divIti > a{
+    padding: initial;
+    margin-top: 20px;
+}
+
+.paradas{
+    height: 40px;
+    width: 33px;
+    text-align: center;
+}
+
+.semhorario{
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.div-btn-feed{
+    padding-bottom: 1em;
+}
+
+.btn-feed, .btn-feed:hover{
+    background-color: #232443;
+    border: 1px solid #232443;
+}
+
+.btn-feed:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #454775;
+}
+
+.btn-feed:not(:disabled):not(.disabled).active, .btn-feed:not(:disabled):not(.disabled):active, .show>.btn-feed.dropdown-toggle {
+    color: #fff;
+    background-color: #454775;
+    border-color: #454775;
+}
+
+.rodape{
+    position: relative; 
+    height: 2em; 
+    bottom:0;
+    text-align: justify;
+    font-size: 1.2em;
+    margin-top: 1em;
+    padding: 0em 0.5em 0em 0.5em;
+}
+
