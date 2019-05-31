@@ -21,6 +21,7 @@ class CreateHorariosTable extends Migration
             $table->unsignedBigInteger('campus');
             $table->foreign('linha')->references('id')->on('linhas');
             $table->foreign('campus')->references('id')->on('campuses');
+            $table->unique('horario','linha');
             $table->timestamps();
         });
     }

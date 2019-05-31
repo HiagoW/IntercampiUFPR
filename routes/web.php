@@ -16,16 +16,22 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     $campi = Campus::all();
-    $linhas = Linha::all('nomeLinha');
-    $horarios = DB::table('horarios')->select('horario','chegada','campus')->where('linha',1)->get();
+    $linhas = Linha::all();
+    $horarios = DB::table('horarios')->select('horario','chegada','campus','linha')->get();
     foreach($horarios as $horario){
         foreach($campi as $campus){
             if($horario->campus == $campus->id){
                 $horario->campus = $campus->sigla;
             }
         }
+        foreach($linhas as $linha){
+            if($horario->linha == $linha->id){
+                $horario->linha = $linha->nomeLinha;
+            }
+        }
     }
     $campi = Campus::all('sigla');
+    $linhas = Linha::all('nomeLinha');
     return view('index',[
         'campi' => json_encode($campi, JSON_UNESCAPED_SLASHES),
         'linhas' => json_encode($linhas, JSON_UNESCAPED_SLASHES),

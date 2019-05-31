@@ -26,6 +26,9 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
       //Campus
       var campus = {!! $campi !!};
       
+      //Linhas
+      var linhas = {!! $linhas !!};
+
       //maps
       var maps = new Object();
           var maps = {
@@ -44,149 +47,8 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
       
       
 
-      var dados1 = {!! $horarios !!};
+      var dados = {!! $horarios !!};
       
-      //INTERCAMPI 2
-      var dados2 = [
-      ["06:50", campus[0]],
-      ["06:55", campus[8]],
-      ["07:05", campus[7]],
-      ["07:20", campus[2]],
-      ["07:35", campus[4]],
-      ["07:40", campus[9]],
-      ["07:50", campus[6]],
-      ["08:00", campus[0], "c"],
-      ["09:30", campus[0]],
-      ["09:35", campus[5]],
-      ["09:40", campus[8]],
-      ["09:50", campus[3]],
-      ["10:00", campus[0]],
-      ["10:20", campus[2]],
-      ["10:40", campus[4]],
-      ["10:45", campus[9]],
-      ["11:10", campus[0]],
-      ["11:30", campus[2]],
-      ["11:40", campus[4]],
-      ["11:45", campus[9]],
-      ["12:00", campus[8]],
-      ["12:10", campus[0], "c"],
-      ["12:40", campus[0]],
-      ["12:45", campus[5]],
-      ["12:50", campus[8]],
-      ["13:10", campus[2]],
-      ["13:15", campus[4]],
-      ["13:20", campus[9]],
-      ["13:45", campus[8]],
-      ["13:50", campus[0], "c"],
-      ["14:30", campus[0]],
-      ["14:50", campus[2]],
-      ["15:10", campus[4]],
-      ["15:15", campus[9]],
-      ["15:30", campus[2]],
-      ["16:30", campus[8]],
-      ["16:40", campus[3]],
-      ["17:00", campus[0]],
-      ["17:20", campus[2]],
-      ["17:40", campus[4]],
-      ["17:45", campus[9]],
-      ["18:15", campus[8]],
-      ["18:30", campus[7]],
-      ["18:45", campus[0], "c"]
-      ];
-
-      //INTERCAMPI 4
-      var dados4 = [
-      ["06:55", campus[0]],
-      ["07:05", campus[8]],
-      ["07:15", campus[1]],
-      ["07:30", campus[8]],
-      ["07:50", campus[2]],
-      ["08:25", campus[4]],
-      ["08:30", campus[9]],
-      ["08:50", campus[0]],
-      ["09:15", campus[1]],
-      ["09:40", campus[8]],
-      ["09:50", campus[3]],
-      ["10:00", campus[0]],
-      ["10:20", campus[2]],
-      ["10:40", campus[4]],
-      ["10:45", campus[9]],
-      ["11:00", campus[0]],
-      ["11:20", campus[2]],
-      ["11:30", campus[4]],
-      ["11:35", campus[9]],
-      ["12:00", campus[8]],
-      ["12:15", campus[1]],
-      ["12:30", campus[8]],
-      ["12:40", campus[0], "c"],
-      ["13:05", campus[0]],
-      ["13:15", campus[8]],
-      ["13:30", campus[1]],
-      ["13:45", campus[8]],
-      ["14:00", campus[0], "c"],
-      ["14:30", campus[0]],
-      ["14:50", campus[2]],
-      ["15:10", campus[4]],
-      ["15:15", campus[9]],
-      ["15:30", campus[2]],
-      ["16:00", campus[1]],
-      ["16:30", campus[8]],
-      ["16:40", campus[3]],
-      ["17:00", campus[0]],
-      ["17:20", campus[2]],
-      ["17:40", campus[4]],
-      ["17:45", campus[9]],
-      ["17:55", campus[10]],
-      ["18:20", campus[8]],
-      ["18:30", campus[3]],
-      ["18:50", campus[0]],
-      ["19:10", campus[8]],
-      ["19:30", campus[1]],
-      ["19:50", campus[8]],
-      ["20:00", campus[0], "c"]
-      ];
-
-      //INTERCAMPI EXTRA
-      var dadosExtra = [
-      ["06:45", campus[8]],
-      ["06:55", campus[2]],
-      ["07:00", campus[4]],
-      ["07:15", campus[8]],
-      ["07:30", campus[0], "c"],
-      ["11:45", campus[4]],
-      ["11:50", campus[9]],
-      ["12:50", campus[8], "c"],
-      ["15:25", campus[8]],
-      ["15:35", campus[2]],
-      ["15:45", campus[4]],
-      ["16:05", campus[8], "c"],
-      ["18:05", campus[8]],
-      ["18:25", campus[2]],
-      ["18:30", campus[4]],
-      ["18:50", campus[8], "c"],
-      ];
-
-      //INTERCAMPI 3 (Sábado)
-      var dados3 = [
-          ["06:30", campus[0]],
-          ["06:45", campus[8]],
-          ["06:55", campus[2]],
-          ["07:05", campus[4]],
-          ["07:20", campus[3]],
-          ["07:25", campus[0]],
-          ["07:40", campus[2]],
-          ["08:00", campus[4]],
-          ["08:25", campus[8]],
-          ["09:00", campus[0],"c"],
-          ["11:00", campus[0]],
-          ["11:10", campus[8]],
-          ["11:25", campus[2]],
-          ["11:30", campus[4]],
-          ["11:50", campus[8]],
-          ["12:00", campus[0], "c"],
-          ];
-      //cont - Vai controlar inicio e fim do itinerario
-      //string - vai montar o itinerario
       var origem = null, destino = null, resultado='';
       var dict = new Object();
           var dict = {
@@ -241,16 +103,10 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
                   montaIndicacaoParada();
                   $('[data-toggle="popover"]').popover('hide');
                   $("#resultado").empty();
-                  resultado += "<hr><div class='container-fluid'> <div class='row justify-content-center'> <div class='col-12'><h3 class='titulo'>Intercampi 1</h3></div></div></div>";
-                  montarItinerario(dados1);
-                  resultado += "<hr><div class='container-fluid'> <div class='row justify-content-center'> <div class='col-12'><h3 class='titulo'>Intercampi 2</h3></div></div></div>";
-                  montarItinerario(dados2);
-                  resultado += "<hr><div class='container-fluid'> <div class='row justify-content-center'> <div class='col-12'><h3 class='titulo'>Intercampi 4</h3></div></div></div>";
-                  montarItinerario(dados4);
-                  resultado += "<hr><div class='container-fluid'> <div class='row justify-content-center'> <div class='col-12'><h3 class='titulo'>Intercampi Extra</h3></div></div></div>";
-                  montarItinerario(dadosExtra);
-                  resultado += "<hr><div class='container-fluid'> <div class='row justify-content-center'> <div class='col-12'><h3 class='titulo'>Intercampi 3 (Sábado)</h3></div></div></div>";
-                  montarItinerario(dados3);
+                  linhas.forEach(linha => {
+                    resultado += "<hr><div class='container-fluid'> <div class='row justify-content-center'> <div class='col-12'><h3 class='titulo'>"+linha["nomeLinha"]+"</h3></div></div></div>";
+                    montarItinerario(dados, linha);
+                  });
                   $("#resultado").append(resultado);
                   resultado='';
                   $('[data-toggle="popover"]').popover();
@@ -258,7 +114,15 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
                       trigger: 'focus'
                     })
       }
-      function montarItinerario(dados) {
+      function montarItinerario(dados, linha) {
+        var dadosLinha = new Array();
+        dados.forEach(dado => {
+          if(dado["linha"]==linha["nomeLinha"]){
+            dadosLinha.push(dado);
+          }
+        });  
+        //cont - Vai controlar inicio e fim do itinerario
+        //string - vai montar o itinerario
           string = '';
           popover = '';
           cont = false;
@@ -266,15 +130,16 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
           contpop=false;
           //salva o estado da var resultado para depois verificar se houve mudança
           estadoRes = resultado;
-          dados.forEach(elemento => {
+          dadosLinha.forEach(elemento => {
               if (cont == true) {
                   if(destino!=elemento["campus"]){
                       popover+="<p>"+dict[elemento["campus"]]+": "+elemento["horario"]+"</p>";
-                  }//se o onibus recolhe (existe elemento[2]), ignora
-                  if (elemento["chegada"] !== null) {
-                      string = '';
-                      popover='';
-                      cont = false;
+                      //se o onibus recolhe (existe elemento[2]), ignora
+                      if (elemento["chegada"] == 'c') {
+                        string = '';
+                        popover='';
+                        cont = false;
+                      }
                   }
                   //Quando chega no destino, da append no itinerario, zera string
                   //zera cont e sai da funcao
@@ -291,11 +156,6 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
                           string=string.replace("origem col-5","origem col-6");
                           string=string.replace("destino col-5","destino col-6");
                       }*/
-                      if (elemento["chegada"] !== null) {
-                          string = '';
-                          popover='';
-                          cont = false;
-                      }
                       resultado += string;
                       string = '';
                       cont = false;
@@ -303,7 +163,7 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
                   }
               }
               //Se achar a origem, inicia itinerario
-              if (origem == elemento["campus"] && elemento["chegada"] === null) {
+              if (origem == elemento["campus"] && elemento["chegada"] == null) {
                   popover='';
                   string = '';
                   string += '<div class="container-fluid"><div class="row iti"> <div id="origem" class="origem col-5"> <span>' + dict[elemento["campus"]] + '</span><p>' + elemento["horario"] + '</p><img class="setas" src="./imgs/seta2.png"></div>';

@@ -41,7 +41,7 @@ class HorarioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'horario'=>'required|unique:horarios|max:5',
+            'horario'=>'required|max:5',
             'linha'=>'required',
             'campus'=>'required'
         ]);
@@ -89,7 +89,7 @@ class HorarioController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'horario'=>'required|unique:horarios|max:5',
+            'horario'=>'required|max:5',
             'linha'=>'required',
             'campus'=>'required'
         ]);
