@@ -304,11 +304,12 @@ function montarItinerario(dados) {
         if (cont == true) {
             if(destino!=elemento[1]){
                 popover+="<p>"+dict[elemento[1]]+": "+elemento[0]+"</p>";
-            }//se o onibus recolhe (existe elemento[2]), ignora
-            if (elemento[2] !== void 0) {
-                string = '';
-                popover='';
-                cont = false;
+                //se o onibus recolhe (existe elemento[2]), ignora
+                if (elemento[2] !== void 0) {
+                    string = '';
+                    popover='';
+                    cont = false;
+                }
             }
             //Quando chega no destino, da append no itinerario, zera string
             //zera cont e sai da funcao
@@ -325,11 +326,6 @@ function montarItinerario(dados) {
                     string=string.replace("origem col-5","origem col-6");
                     string=string.replace("destino col-5","destino col-6");
                 }*/
-                if (elemento[2] !== void 0) {
-                    string = '';
-                    popover='';
-                    cont = false;
-                }
                 resultado += string;
                 string = '';
                 cont = false;
