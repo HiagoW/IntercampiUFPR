@@ -36,6 +36,7 @@ CREATE TABLE `campuses` (
   `sigla` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `urlMaps` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -46,7 +47,7 @@ CREATE TABLE `campuses` (
 
 LOCK TABLES `campuses` WRITE;
 /*!40000 ALTER TABLE `campuses` DISABLE KEYS */;
-INSERT INTO `campuses` VALUES (1,'Agrárias','agrarias','2019-05-30 23:52:37','2019-05-31 20:21:50'),(2,'Botânico','botanico','2019-05-31 20:07:41','2019-05-31 20:22:00'),(3,'Comunicação','comunicacao','2019-05-31 20:22:20','2019-05-31 20:22:20'),(4,'DeArtes','artes','2019-05-31 20:22:28','2019-05-31 20:22:28'),(5,'Politécnico','poli','2019-05-31 20:22:35','2019-05-31 20:22:35'),(6,'Prae','prae','2019-05-31 20:22:42','2019-05-31 20:22:42'),(7,'Rebouças','reboucas','2019-05-31 20:22:49','2019-05-31 20:22:49'),(8,'Rebouças-Cassol','reboucas-c','2019-05-31 20:23:04','2019-05-31 20:23:04'),(9,'Rebouças-JN','reboucas-jn','2019-05-31 20:23:13','2019-05-31 20:23:13'),(10,'Reitoria','reitoria','2019-05-31 20:23:20','2019-05-31 20:23:20'),(11,'SEPT','sept','2019-05-31 20:23:25','2019-05-31 20:23:25');
+INSERT INTO `campuses` VALUES (1,'Agrárias','agrarias','2019-05-30 23:52:37','2019-06-02 02:08:28','https://goo.gl/maps/fNEw6uQsx5u'),(2,'Botânico','botanico','2019-05-31 20:07:41','2019-05-31 20:22:00',''),(3,'Comunicação','comunicacao','2019-05-31 20:22:20','2019-05-31 20:22:20',''),(4,'DeArtes','artes','2019-05-31 20:22:28','2019-05-31 20:22:28',''),(5,'Politécnico','poli','2019-05-31 20:22:35','2019-05-31 20:22:35',''),(6,'Prae','prae','2019-05-31 20:22:42','2019-05-31 20:22:42',''),(7,'Rebouças','reboucas','2019-05-31 20:22:49','2019-05-31 20:22:49',''),(8,'Rebouças-Cassol','reboucas-c','2019-05-31 20:23:04','2019-05-31 20:23:04',''),(9,'Rebouças-JN','reboucas-jn','2019-05-31 20:23:13','2019-05-31 20:23:13',''),(10,'Reitoria','reitoria','2019-05-31 20:23:20','2019-05-31 20:23:20',''),(11,'SEPT','sept','2019-05-31 20:23:25','2019-05-31 20:23:25','');
 /*!40000 ALTER TABLE `campuses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +97,6 @@ CREATE TABLE `linhas` (
   `nomeLinha` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `urlMaps` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -107,7 +107,7 @@ CREATE TABLE `linhas` (
 
 LOCK TABLES `linhas` WRITE;
 /*!40000 ALTER TABLE `linhas` DISABLE KEYS */;
-INSERT INTO `linhas` VALUES (1,'Intercampi 1','2019-05-30 23:52:21','2019-05-30 23:52:21',''),(2,'Intercampi 2','2019-05-31 20:46:48','2019-05-31 20:46:48','');
+INSERT INTO `linhas` VALUES (1,'Intercampi 1','2019-05-30 23:52:21','2019-05-30 23:52:21'),(2,'Intercampi 2','2019-05-31 20:46:48','2019-05-31 20:46:48');
 /*!40000 ALTER TABLE `linhas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,4 +174,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-01 11:56:11
+-- Dump completed on 2019-06-01 12:16:43
