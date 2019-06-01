@@ -41,7 +41,8 @@ class CampusController extends Controller
     {
         $request->validate([
             'nomeCampus'=>'required|unique:campuses|max:200',
-            'sigla'=>'required'
+            'sigla'=>'required',
+            'urlMaps'=>'required|max:100',
         ]);
         $campus = new Campus([
             'nomeCampus'=>$request->get('nomeCampus'),
@@ -86,12 +87,14 @@ class CampusController extends Controller
     {
         $request->validate([
             'nomeCampus'=>'required|max:200',
-            'sigla'=>'required'
+            'sigla'=>'required',
+            'urlMaps'=>'required|max:100',
         ]);
 
         $campus = Campus::find($id);
         $campus->nomeCampus = $request->get('nomeCampus');
         $campus->sigla = $request->get('sigla');
+        $campus->urlMaps = $request->get('urlMaps');
         $campus->save();
 
         return redirect('/campi')->with('success','Campus alterado!');

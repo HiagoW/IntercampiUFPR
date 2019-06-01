@@ -13,15 +13,8 @@ class AddUniqueAndUrl extends Migration
      */
     public function up()
     {
-        Schema::table('linhas',function($table){
-            $table->dropColumn('urlMaps');
-        });
         Schema::table('campuses',function($table){
             $table->string('urlMaps');
-        });
-        
-        Schema::table('horarios',function($table){
-            $table->unique(['horario','linha']);
         });
     }
 
@@ -31,13 +24,9 @@ class AddUniqueAndUrl extends Migration
      * @return void
      */
     public function down()
-    {
-        
+    {   
         Schema::table('campuses',function($table){
             $table->dropColumn('urlMaps');
-        });
-        Schema::table('horarios',function($table){
-            $table->dropUnique('horarios_horario_linha_unique');
         });
     }
 }

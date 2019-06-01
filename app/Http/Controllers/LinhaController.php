@@ -42,7 +42,6 @@ class LinhaController extends Controller
     {
         $request->validate([
             'nomeLinha'=>'required|unique:linhas|max:50',
-            'urlMaps'=>'required|max:100',
         ]);
         $linha = new Linha([
             'nomeLinha'=>$request->get('nomeLinha'),
@@ -86,7 +85,6 @@ class LinhaController extends Controller
     {
         $request->validate([
             'nomeLinha'=>'required|max:50',
-            'urlMaps'=>'required|max:100',
         ]);
 
         $linha = Linha::find($id);

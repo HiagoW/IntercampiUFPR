@@ -20,6 +20,7 @@
           <td>ID</td>
           <td>Campus</td>
           <td>Sigla</td>
+          <td>URL do Maps</td>
           <td colspan="2">Ação</td>
         </tr>
     </thead>
@@ -29,6 +30,7 @@
             <td>{{$campus->id}}</td>
             <td>{{$campus->nomeCampus}}</td>
             <td>{{$campus->sigla}}</td>
+            <td><a href='{{$campus->urlMaps}}'>Maps</a></td>
             <td><a href="{{ route('campi.edit',$campus->id)}}" class="btn btn-primary">Editar</a></td>
             <td>
                 <form action="{{ route('campi.destroy', $campus->id)}}" method="post">

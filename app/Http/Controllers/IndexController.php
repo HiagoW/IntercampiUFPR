@@ -18,8 +18,8 @@ class IndexController extends Controller
         $arrayMaps = array();
         $campi = Campus::all();
         $linhas = Linha::all();
-        foreach($linhas as $linha){
-            $arrayMaps[$linha->sigla]=$linha->urlMaps;
+        foreach($campi as $campus){
+            $arrayMaps[$campus->sigla]=$campus->urlMaps;
         }
         $horarios = Horario::all('horario','chegada','campus','linha');
     foreach($horarios as $horario){
@@ -35,7 +35,7 @@ class IndexController extends Controller
         }
     }
     $campi = Campus::all('sigla');
-    $linhas = Linha::all('nomeLinha','urlMaps');
+    $linhas = Linha::all('nomeLinha');
     $campi2 = Campus::all();
     return view('index',[
         'campi' => json_encode($campi, JSON_UNESCAPED_SLASHES),

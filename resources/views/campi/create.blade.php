@@ -31,6 +31,11 @@
             <label for="sigla">Sigla:</label>
             <input type="text" class="form-control" name="sigla"/>
         </div>
+        <div class="form-group">
+            @csrf
+            <label for="urlMaps">URL do Maps:</label>
+            <input type="text" class="form-control" name="urlMaps"/>
+        </div>
           <button type="submit" class="btn btn-primary">Add</button>
       </form>
   </div>
