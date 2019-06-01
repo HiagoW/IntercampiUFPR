@@ -1,8 +1,4 @@
 <?php
-use App\Campus;
-use App\Linha;
-use App\Horario;
-use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,31 +10,15 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
-    $campi = Campus::all();
-    $linhas = Linha::all();
-    $horarios = DB::table('horarios')->select('horario','chegada','campus','linha')->get();
-    foreach($horarios as $horario){
-        foreach($campi as $campus){
-            if($horario->campus == $campus->id){
-                $horario->campus = $campus->sigla;
-            }
-        }
-        foreach($linhas as $linha){
-            if($horario->linha == $linha->id){
-                $horario->linha = $linha->nomeLinha;
-            }
-        }
-    }
-    $campi = Campus::all('sigla');
-    $linhas = Linha::all('nomeLinha');
-    return view('index',[
-        'campi' => json_encode($campi, JSON_UNESCAPED_SLASHES),
-        'linhas' => json_encode($linhas, JSON_UNESCAPED_SLASHES),
-        'horarios' => json_encode($horarios, JSON_UNESCAPED_SLASHES)]
-    );
-});
+Route::get('/', 'IndexController@index');
+Route::get('/home','HorarioController@index');
 
 Route::resource('linhas', 'LinhaController');
 Route::resource('campi', 'CampusController');
 Route::resource('horarios', 'HorarioController');
+
+Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');
+Route::get('/login', 'SessionsController@create')->name('login');
+Route::post('/login', 'SessionsController@store');
+Route::get('/logout', 'SessionsController@destroy');

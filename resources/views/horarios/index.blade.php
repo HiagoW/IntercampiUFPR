@@ -7,6 +7,8 @@
   }
 </style>
 <div class="uper">
+  <a href="{{ route('linhas.index')}}" class="btn btn-primary">Linhas</a>
+  <a href="{{ route('campi.index')}}" class="btn btn-primary">Campus</a><br />
   @if(session()->get('success'))
     <div class="alert alert-success">
       {{ session()->get('success') }}  
@@ -15,7 +17,6 @@
   <table class="table table-striped">
     <thead>
         <tr>
-          <td>ID</td>
           <td>Horario</td>
           <td>Chegada</td>
           <td>Linha</td>
@@ -26,7 +27,6 @@
     <tbody>
         @foreach($horarios as $horario)
         <tr>
-            <td>{{$horario->id}}</td>
             <td>{{$horario->horario}}</td>
             <td>{{$horario->chegada}}</td>
             <td>{{$horario->linha}}</td>

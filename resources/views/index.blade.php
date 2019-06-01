@@ -30,20 +30,7 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
       var linhas = {!! $linhas !!};
 
       //maps
-      var maps = new Object();
-          var maps = {
-              "agrarias": "https://goo.gl/maps/fNEw6uQsx5u",
-              "artes": "https://goo.gl/maps/c8WXiSfkJST2",
-              "botanico": "https://goo.gl/maps/tu61GwizR8N2",
-              "comunicacao": "https://goo.gl/maps/XWbbFB3kiR62",
-              "poli": "https://goo.gl/maps/DoJ8fTy2rQB2",
-              "prae": "https://goo.gl/maps/4x2yKgAnhiv",
-              "reboucas-c": "https://goo.gl/maps/oRzofkYV8EU2",
-              "reboucas-jn": "https://goo.gl/maps/Dx4Hnb8i6Jt",
-              "reitoria": "https://goo.gl/maps/ftNKFWXGQeQ2",
-              "sept": "https://goo.gl/maps/1JuBxu2zeXz",
-              "reboucas": "https://goo.gl/maps/wbuQUbxVroP2"
-            };
+      var maps = {!! $maps !!};
       
       
 
@@ -213,17 +200,9 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
       <div class="col-6 col-md-4 offset-2 offset-md-4">
         <select name="origem" id="origem" class="custom-select">
           <option selected disabled>Origem</option>
-          <option value="agrarias">Agrárias</option>
-          <option value="botanico">Botânico</option>
-          <option value="comunicacao">Comunicação</option>
-          <option value="artes">DeArtes</option>
-          <option value="poli">Politécnico</option>
-          <option value="prae">Prae</option>
-          <option value="reboucas">Rebouças</option>
-          <option value="reboucas-c">Rebouças-Cassol</option>
-          <option value="reboucas-jn">Rebouças-JN</option>
-          <option value="reitoria">Reitoria</option>
-          <option value="sept">SEPT</option>
+          @foreach($campi2 as $campus)
+          <option value={{$campus->sigla}}>{{$campus->nomeCampus}}</option>
+          @endforeach
         </select>
       </div>
       <div class="col-2 divIconMap">
@@ -236,18 +215,10 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
     <div class="row">
       <div class="col-6 col-md-4 offset-2 offset-md-4">
         <select name="destino" id="destino" class="custom-select">
-          <option selected disabled>Destino</option>
-          <option value="agrarias">Agrárias</option>
-          <option value="botanico">Botânico</option>
-          <option value="comunicacao">Comunicação</option>
-          <option value="artes">DeArtes</option>
-          <option value="poli">Politécnico</option>
-          <option value="prae">Prae</option>
-          <option value="reboucas">Rebouças</option>
-          <option value="reboucas-c">Rebouças-Cassol</option>
-          <option value="reboucas-jn">Rebouças-JN</option>
-          <option value="reitoria">Reitoria</option>
-          <option value="sept">SEPT</option>
+            <option selected disabled>Destino</option>
+            @foreach($campi2 as $campus)
+            <option value={{$campus->sigla}}>{{$campus->nomeCampus}}</option>
+            @endforeach
         </select>
       </div>
       <div class="col-2 divIconMap">

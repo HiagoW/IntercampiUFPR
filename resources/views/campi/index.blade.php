@@ -7,6 +7,8 @@
   }
 </style>
 <div class="uper">
+  <a href="{{ route('horarios.index')}}" class="btn btn-primary">Horarios</a>
+  <a href="{{ route('linhas.index')}}" class="btn btn-primary">Linhas</a><br />
   @if(session()->get('success'))
     <div class="alert alert-success">
       {{ session()->get('success') }}  

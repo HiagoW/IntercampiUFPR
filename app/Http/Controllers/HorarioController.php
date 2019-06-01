@@ -8,6 +8,9 @@ use App\Campus;
 use App\Linha;
 class HorarioController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +18,24 @@ class HorarioController extends Controller
      */
     public function index()
     {
-        $horarios = Horario::all();
-
+        $horarios = Horario::orderBy('linha', 'ASC')->orderBy('horario','ASC')->get();
+        $campi = Campus::all();
+        $linhas = Linha::all();
+        foreach($horarios as $horario){
+            foreach($campi as $campus){
+                if($horario->campus == $campus->id){
+                    $horario->campus = $campus->nomeCampus;
+                }
+            }
+            foreach($linhas as $linha){
+                if($horario->linha == $linha->id){
+                    $horario->linha = $linha->nomeLinha;
+                }
+            }
+            if($horario->chegada!=null){
+                $horario->chegada='Sim';
+            }
+        }
         return view('horarios.index', compact('horarios'));
     }
 
@@ -75,8 +94,10 @@ class HorarioController extends Controller
     public function edit($id)
     {
         $horario = horario::find($id);
+        $campi = Campus::all();
+        $linhas = Linha::all();
 
-        return view('horarios.edit', compact('horario'));
+        return view('horarios.edit', compact(['horario','campi','linhas']));
     }
 
     /**

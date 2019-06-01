@@ -1,10 +1,8 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
-class CreateCampusesTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +11,14 @@ class CreateCampusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('campuses', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nomeCampus');
-            $table->string('sigla');
-            $table->string('urlMaps');
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('username')->unique();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -29,6 +26,6 @@ class CreateCampusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('campuses');
+        Schema::dropIfExists('users');
     }
 }

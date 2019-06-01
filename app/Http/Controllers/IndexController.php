@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Campus;
+use App\Horario;
 use App\Linha;
-
-class LinhaController extends Controller
+class IndexController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +15,35 @@ class LinhaController extends Controller
      */
     public function index()
     {
+        $arrayMaps = array();
+        $campi = Campus::all();
         $linhas = Linha::all();
-
-        return view('linhas.index', compact('linhas'));
+        foreach($linhas as $linha){
+            $arrayMaps[$linha->sigla]=$linha->urlMaps;
+        }
+        $horarios = Horario::all('horario','chegada','campus','linha');
+    foreach($horarios as $horario){
+        foreach($campi as $campus){
+            if($horario->campus == $campus->id){
+                $horario->campus = $campus->sigla;
+            }
+        }
+        foreach($linhas as $linha){
+            if($horario->linha == $linha->id){
+                $horario->linha = $linha->nomeLinha;
+            }
+        }
+    }
+    $campi = Campus::all('sigla');
+    $linhas = Linha::all('nomeLinha','urlMaps');
+    $campi2 = Campus::all();
+    return view('index',[
+        'campi' => json_encode($campi, JSON_UNESCAPED_SLASHES),
+        'linhas' => json_encode($linhas, JSON_UNESCAPED_SLASHES),
+        'horarios' => json_encode($horarios, JSON_UNESCAPED_SLASHES),
+        'maps' => json_encode($arrayMaps,JSON_UNESCAPED_SLASHES)],
+        compact('campi2')
+    );
     }
 
     /**
@@ -29,7 +53,7 @@ class LinhaController extends Controller
      */
     public function create()
     {
-        return view('linhas.create');
+        //
     }
 
     /**
@@ -40,15 +64,7 @@ class LinhaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nomeLinha'=>'required|unique:linhas|max:50',
-            'urlMaps'=>'required|max:100',
-        ]);
-        $linha = new Linha([
-            'nomeLinha'=>$request->get('nomeLinha'),
-        ]);
-        $linha->save();
-        return redirect('/linhas')->with('success', 'Linha adicionada!');
+        //
     }
 
     /**
@@ -70,9 +86,7 @@ class LinhaController extends Controller
      */
     public function edit($id)
     {
-        $linha = Linha::find($id);
-
-        return view('linhas.edit', compact('linha'));
+        //
     }
 
     /**
@@ -84,16 +98,7 @@ class LinhaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nomeLinha'=>'required|max:50',
-            'urlMaps'=>'required|max:100',
-        ]);
-
-        $linha = Linha::find($id);
-        $linha->nomeLinha = $request->get('nomeLinha');
-        $linha->save();
-
-        return redirect('/linhas')->with('success','Linha alterada!');
+        //
     }
 
     /**
@@ -104,9 +109,6 @@ class LinhaController extends Controller
      */
     public function destroy($id)
     {
-        $linha = Linha::find($id);
-        $linha->delete();
-
-     return redirect('/linhas')->with('success', 'Linha deletada!');
+        //
     }
 }
