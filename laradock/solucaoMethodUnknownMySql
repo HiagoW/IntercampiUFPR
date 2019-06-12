@@ -1,0 +1,12 @@
+This issue still exists, but I don't know if this is PMA or something else, anyway as workaround:
+
+$ docker-compose exec mysql bash
+$ mysql -u root -p 
+You should be able to login as 'root' or your other password.
+
+Execute the following commands:
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
+ALTER USER 'default'@'%' IDENTIFIED WITH mysql_native_password BY 'secret';
+This should give you access in PMA.
