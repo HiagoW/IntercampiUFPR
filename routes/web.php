@@ -14,6 +14,7 @@ Route::get('/', 'IndexController@index');
 Route::get('/home','HorarioController@index');
 
 Route::resource('linhas', 'LinhaController');
+Route::get('linhas/{id}/horarios','LinhaController@horarios')->name('linhas.horarios');
 Route::resource('campi', 'CampusController');
 Route::resource('horarios', 'HorarioController');
 

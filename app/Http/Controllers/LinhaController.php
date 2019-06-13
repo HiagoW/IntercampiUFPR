@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Linha;
+use App\Horario;
 
 class LinhaController extends Controller
 {
@@ -110,5 +111,18 @@ class LinhaController extends Controller
         $linha->delete();
 
      return redirect('/linhas')->with('success', 'Linha deletada!');
+    }
+
+    /**
+     * Mostra os horários para a linha
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function horarios($id)
+    {
+        $horarios = Horario::where('linha',$id)->get();
+        $linha = Linha::find($id);
+        return view('horarios.index', compact('horarios', 'linha'));
     }
 }

@@ -5,15 +5,20 @@
   .uper {
     margin-top: 40px;
   }
+  .content {
+    margin-top: 20px;
+  }
 </style>
 <div class="uper">
-  <a href="{{ route('horarios.index')}}" class="btn btn-primary">Horarios</a>
+  <a style="display:none" href="{{ route('horarios.index')}}" class="btn btn-primary">Horarios</a>
   <a href="{{ route('campi.index')}}" class="btn btn-primary">Campus</a><br />
   @if(session()->get('success'))
     <div class="alert alert-success">
       {{ session()->get('success') }}  
     </div><br />
   @endif
+  </div>
+  <div class="content">
   <table class="table table-striped">
     <thead>
         <tr>
@@ -37,6 +42,7 @@
                   <button class="btn btn-danger" type="submit">Deletar</button>
                 </form>
             </td>
+            <td><a href="{{ route('linhas.horarios',$linha->id)}}" class="btn btn-primary">Ver Horários</a></td>
         </tr>
         @endforeach
     </tbody>

@@ -14,7 +14,7 @@ class SessionsController extends Controller
     			'message'=>'Username ou senha incorretos.'
     		]);
     	}
-    	return redirect('horarios');
+    	return redirect('linhas');
     }
     public function destroy(){
     	auth()->logout();

@@ -5,8 +5,12 @@
   .uper {
     margin-top: 40px;
   }
+  .content {
+    margin-top: 20px;
+  }
 </style>
 <div class="uper">
+  <h1>{{$linha->nomeLinha}}</h1>
   <a href="{{ route('linhas.index')}}" class="btn btn-primary">Linhas</a>
   <a href="{{ route('campi.index')}}" class="btn btn-primary">Campus</a><br />
   @if(session()->get('success'))
@@ -14,6 +18,8 @@
       {{ session()->get('success') }}  
     </div><br />
   @endif
+  </div>
+  <div class="content">
   <table class="table table-striped">
     <thead>
         <tr>
@@ -43,5 +49,5 @@
         @endforeach
     </tbody>
   </table>
-<div>
+</div>
 @endsection
