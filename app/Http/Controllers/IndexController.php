@@ -35,7 +35,7 @@ class IndexController extends Controller
         }
     }
     $campi = Campus::all('sigla');
-    $linhas = Linha::all('nomeLinha');
+    $linhas = Linha::select('nomeLinha','situacao')->where('situacao','<>','i')->get();
     $campi2 = Campus::all();
     return view('index',[
         'campi' => json_encode($campi, JSON_UNESCAPED_SLASHES),

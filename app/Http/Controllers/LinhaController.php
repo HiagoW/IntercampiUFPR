@@ -42,9 +42,11 @@ class LinhaController extends Controller
     {
         $request->validate([
             'nomeLinha'=>'required|unique:linhas|max:50',
+            'situacao'=>'required|max:1'
         ]);
         $linha = new Linha([
             'nomeLinha'=>$request->get('nomeLinha'),
+            'situacao'=>$request->get('situacao'),
         ]);
         $linha->save();
         return redirect('/linhas')->with('success', 'Linha adicionada!');
@@ -85,10 +87,12 @@ class LinhaController extends Controller
     {
         $request->validate([
             'nomeLinha'=>'required|max:50',
+            'situacao'=>'required|max:1',
         ]);
 
         $linha = Linha::find($id);
         $linha->nomeLinha = $request->get('nomeLinha');
+        $linha->situacao = $request->get('situacao');
         $linha->save();
 
         return redirect('/linhas')->with('success','Linha alterada!');

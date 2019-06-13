@@ -19,6 +19,7 @@
         <tr>
           <td>ID</td>
           <td>Linha</td>
+          <td>Situacao<td>
           <td colspan="2">Ação</td>
         </tr>
     </thead>
@@ -27,6 +28,7 @@
         <tr>
             <td>{{$linha->id}}</td>
             <td>{{$linha->nomeLinha}}</td>
+            <td>{{$linha->situacao}}</td>
             <td><a href="{{ route('linhas.edit',$linha->id)}}" class="btn btn-primary">Editar</a></td>
             <td>
                 <form action="{{ route('linhas.destroy', $linha->id)}}" method="post">

@@ -91,8 +91,12 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
                   $('[data-toggle="popover"]').popover('hide');
                   $("#resultado").empty();
                   linhas.forEach(linha => {
+                    if(linha["situacao"]=='m'){
+                      resultado += "<hr><div class='container-fluid'> <div class='row justify-content-center'> <div class='col-12'><h3 class='titulo'>"+linha["nomeLinha"]+" em manutenção!</h3></div></div></div>";
+                    }else{
                     resultado += "<hr><div class='container-fluid'> <div class='row justify-content-center'> <div class='col-12'><h3 class='titulo'>"+linha["nomeLinha"]+"</h3></div></div></div>";
                     montarItinerario(dados, linha);
+                    }
                   });
                   $("#resultado").append(resultado);
                   resultado='';

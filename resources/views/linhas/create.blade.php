@@ -26,6 +26,15 @@
               <label for="name">Nome:</label>
               <input type="text" class="form-control" name="nomeLinha"/>
           </div>
+          <div class="form-group">
+            @csrf
+            <label for="situacao">Situação:</label>
+            <select name='situacao'>
+                <option value='a'>Ativo</option>
+                <option value='i'>Inativo</option>
+                <option value='m'>Manutenção</option>
+            </select>
+          </div>
           <button type="submit" class="btn btn-primary">Add</button>
       </form>
   </div>
