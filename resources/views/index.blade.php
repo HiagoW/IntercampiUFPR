@@ -22,7 +22,7 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
   <link rel="icon" href="imgs/favicon.ico" type="image/x-icon">
 
   <script src="js/app.js"></script>
-  <script>
+  <script type="text/javascript">
       //Campus
       var campus = {!! $campi !!};
       
@@ -39,17 +39,9 @@ Identidade Visual: Laís Ponciano Andrade, aluna do curso de Comunicação Insti
       var origem = null, destino = null, resultado='';
       var dict = new Object();
           var dict = {
-              "agrarias": "Agrárias",
-              "artes": "DeArtes",
-              "botanico": "Botânico",
-              "comunicacao": "Comunicação",
-              "poli": "Politécnico",
-              "prae": "Prae",
-              "reboucas-c": "Rebouças-Cassol",
-              "reboucas-jn": "Rebouças-JN",
-              "reitoria": "Reitoria",
-              "sept": "SEPT",
-              "reboucas": "Rebouças"
+              @foreach($campi2 as $campus)
+                '{{$campus->sigla}}':'{{$campus->nomeCampus}}',
+              @endforeach
             };
       $(document).ready(function () {
           $("#origem").change(function () {
